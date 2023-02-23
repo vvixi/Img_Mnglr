@@ -1,4 +1,10 @@
 # image mangler by vvixi
+
+# create glitch art from .bmp images
+# results may vary with your source image
+# good results can be achieved with the following bitmap settings:
+# rgb, 8 bit, perceptual gamma sRGB, 
+
 import random as r
 import time
 import math
@@ -40,38 +46,70 @@ def glitch_image(input_file_name, dist_type):
                 case ["slitscramble"]:
                     # print("Running in ", args, " mode")
                     if rand in range(99):
-                        line = rand
+                        line = b'rand'
                         cur_line += 1
+
                 case ["stretch"]:
                     if rand in range(7):
                         line *= rand
                         cur_line += 1
+
                 case ["stripper"]:
                     if rand in range(199):
                         line *= rand
                         cur_line += 1
+
                 case ["stutter"]:
                     if rand in range(999):
                         line += b'rand **99'
                         cur_line += 1
+
                 case ["shredder"]:
                     if rand % 2:
                         line *= rand
                         cur_line += 1
-           
+
+                case ["ribbons"]:
+                    if rand in range(22):
+                        bytelist = list(line)
+                        # print(bytelist)
+                        bytelist.reverse()
+                        line = b'"".join(str(bytelist))'
+                        
+                        cur_line += 1
+
+                case ["confetti"]:
+                    # 22 previous
+                    if rand % 7==0:
+                        line = b'line.splitlines()[::-1]'
+
+                case ["confetti2"]:
+                    if rand % 3==0:
+                        line = b'line.splitlines()[randint(len(line))::]'
+                        
+                case ["confetti2"]:
+                    # 22 previous
+                    if rand in range(999):
+                        line = b'line.splitlines()[::-1]'
+
+                case ["test"]:
+                    if rand in range(99):
+                        line += b'rand'
+                        cur_line += 1
+                    
             # Write the processed line in the output file
-            out.write(line)
+            out.write(line)    
 
 if __name__ == '__main__':
     # Create the options parser instance
    
     parser = OptionParser()
     parser.add_option("-f", "--file", dest="input_file_name",
-                help="input file name", metavar="FILE")
+                help="input file name")
     parser.add_option("-o", "--output", dest="output_file_name",
                 help="specify output file name")
     parser.add_option("-t", "--type",
-                action="store_false", dest="dist_type", default=True,
+                action="store_false", dest="dist_type",
                 help="choose type of distortion")
 
     (options, args) = parser.parse_args()
