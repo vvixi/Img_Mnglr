@@ -15,6 +15,7 @@ distortion types: slitscramble, stretch, stripper, stutter, shredder, ribbons, c
 `python mnglr.py -f face.bmp shredder`
 
 See included images for examples.
+
 ![alt text](https://github.com/vvixi/Img_Mnglr/blob/main/face-ribbons.bmp "face-ribbons")
 ![alt text](https://github.com/vvixi/Img_Mnglr/blob/main/face-slitscramble.bmp "face-slitscramble")
 ![alt text](https://github.com/vvixi/Img_Mnglr/blob/main/face-stretch.bmp "face-stretch")
