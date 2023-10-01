@@ -77,7 +77,7 @@ def glitch_image(input_file_name, dist_type):
                         if rand % 3==0:
                             line = b'line.splitlines()[randint(len(line))::]'
                             
-                    case ["confetti2"]:
+                    case ["confetti3"]:
                         if rand in range(999):
                             line = b'line.splitlines()[::-1]'
 
